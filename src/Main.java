@@ -5,10 +5,10 @@ public class Main {
 
     public static void main(String[] args) {
         int[] arr = generateRandomArray();
-        System.out.printf("Сумма трат за месяц составила %d рублей.\n", monthSum(arr));
+        System.out.printf("Сумма трат за месяц составила %d рублей.\n", getMonthSum(arr));
         System.out.printf("Минимальная сумма трат за день составила %d рублей.\n", min(arr));
         System.out.printf("Максимальная сумма трат за день составила %d рублей.\n", max(arr));
-        System.out.printf("Средняя сумма трат за месяц составила %.2f рублей.\n", averageSum(arr));
+        System.out.printf("Средняя сумма трат за месяц составила %.2f рублей.\n", getAverageSum(arr));
         char[] reverseFullName = { 'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
         reverseArray(reverseFullName);
     }
@@ -17,12 +17,12 @@ public class Main {
         Random random = new Random();
         int[] arr = new int[30];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(100_000) + 100_000;
+            arr[i] = random.nextInt(100_001) + 100_000;
         }
         return arr;
     }
 
-    public static int monthSum(int[] arr) {
+    public static int getMonthSum(int[] arr) {
         return Arrays.stream(arr)
                 .sum();
     }
@@ -39,8 +39,8 @@ public class Main {
                 .getAsInt();
     }
 
-    public static double averageSum(int[] arr) {
-        return (double) monthSum(arr) / arr.length;
+    public static double getAverageSum(int[] arr) {
+        return (double) getMonthSum(arr) / arr.length;
     }
 
     public static void reverseArray(char[] arr) {
